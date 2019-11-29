@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left:0;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left:0;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">开始右移</button>
+    <button id="btn2">开始左移</button>
+    <button id="btn3">开始右移</button>
+
+    <br><br>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div style="width: 0;height: 1000px;border-left:1px black solid;position:absolute;top:0;left: 1200px;"></div>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var btn1 = document.getElementById("btn1");
+            var btn2 = document.getElementById("btn2");
+            var btn3 = document.getElementById("btn3");
+
+            var box2 = document.getElementById("box2");
+
+
+        btn1.onclick = function(){
+                move(box1 , 1200 , 20);
+        }
+         btn2.onclick = function(){
+                move(box1 , 0 , 10);
+        }
+        btn3.onclick = function(){
+                move(box2 , 1200 , 10);
+        }
+        
+    }
+var timer;
+function move(obj , target , speed){
+    clearInterval(obj.timer);
+
+    var currn = parseInt(getStyle(obj,"left"));
+
+    if(currn > target){
+        speed = -speed;
+    }
+
+                obj.timer = setInterval(function(){
+
+                var oldValue = parseInt(getStyle(obj,"left"));
+
+                var newValue = oldValue + speed;
+
+                if((speed < 0 && newValue < target)  ||  (speed > 0 &&newValue > target)){
+                    newValue = target;
+                }
+                obj.style.left = newValue + "px";
+
+                if(newValue == target){
+                    clearInterval(obj.timer);
+                }
+
+                },30)
+}
+
+        function getStyle(obj , name){
+
+            if(window.getComputedStyle){
+                return getComputedStyle(obj , null)[name];
+            }else{
+                return obj.currentStyle[name];
+            }
+        }
+    </script>
+</body>
+</html>

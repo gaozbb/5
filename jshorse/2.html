@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var obj = {
+        //     width: 500,
+        //     height : 250,
+        //     bgcolor : 'red',
+        //     onclinck : '有',
+        //     }
+
+        // for(var k in obj){
+        //     console.log(obj[k]);           
+        // }
+
+        // function Com(color,weight,paizi,xing){
+        //     this.color = color;
+        //     this.weight = weight;
+        //     this.paizi = paizi;
+        //     this.xing = xing;
+        //     this.gn= function(){
+        //         console.log("看电影");
+        //         console.log("听音乐");
+        //         console.log("打游戏");
+              
+        //     }
+        // }
+        // var compu = new Com('red',500,'牌子','大号');
+        // console.log(compu.color);
+        // console.log(compu.weight);
+        // console.log(compu.paizi);
+        // console.log(compu.xing);
+        // compu.gn();
+        
+        var car = new Object();
+        car.weight = 5000;
+        car.color = 'red';
+        car.paizi = '品牌';
+        car.gn = function(){
+            console.log("载人");
+            console.log("耕田");
+        }
+        console.log(car.weight);
+        console.log(car['color']);
+        console.log(car.paizi);
+        car.gn();
+        
+        
+        
+        
+    </script>
+</body>
+</html>
